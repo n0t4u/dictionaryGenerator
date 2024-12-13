@@ -70,7 +70,7 @@ def extractWords(file, max_length=None, exact_length=None, min_length=None, cond
                     blacklist.update(condition)  # Allow custom blacklists
 
     try:
-        with open(file, 'r', encoding='utf-8') as f:
+        with open(file, 'r', encoding='latin-1') as f:
             for line in f:
                 word = line.strip()
                 word_length = len(word)
@@ -88,7 +88,7 @@ def extractWords(file, max_length=None, exact_length=None, min_length=None, cond
                 filtered_words.append(word)
 
         # Save results to the output file in append mode
-        with open(output, 'a', encoding='utf-8') as out_file:
+        with open(output, 'a', encoding='latin-1') as out_file:
             out_file.write("\n".join(filtered_words) + "\n")
 
         print(f"Extracted words saved to: {output}")
@@ -120,7 +120,7 @@ def generateDictionary(file, max_length, charset, output="generatedDictionary.tx
         generated_words = []
 
         # Read the input dictionary file
-        with open(file, 'r', encoding='utf-8') as f:
+        with open(file, 'r', encoding='latin-1') as f:
             for line in f:
                 word = line.strip()
                 if len(word) == max_length:
@@ -139,7 +139,7 @@ def generateDictionary(file, max_length, charset, output="generatedDictionary.tx
                         generated_words.append(new_word)
 
         # Save the generated words to the output file in append mode
-        with open(output, 'a', encoding='utf-8') as out_file:
+        with open(output, 'a', encoding='latin-1') as out_file:
             out_file.write("\n".join(generated_words) + "\n")
 
         print(f"Generated words saved to: {output}")
@@ -181,7 +181,7 @@ def generateCombinatory(file, output="combinatoryDictionary.txt", extended=False
     try:
         generated_words = []
 
-        with open(file, 'r', encoding='utf-8') as f:
+        with open(file, 'r', encoding='latin-1') as f:
             for line in f:
                 word = line.strip()
 
@@ -200,7 +200,7 @@ def generateCombinatory(file, output="combinatoryDictionary.txt", extended=False
                         generated_words.extend(substitutions_combos)
 
         # Save to the output file
-        with open(output, 'a', encoding='utf-8') as out_file:
+        with open(output, 'a', encoding='latin-1') as out_file:
             out_file.write("\n".join(set(generated_words)) + "\n")
 
         print(f"Combinatory words saved to: {output}")
